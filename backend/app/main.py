@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from app.api.routes import router
+from .api import routes
 
 app = FastAPI(
     title='Issue Companion',
@@ -8,9 +8,9 @@ app = FastAPI(
     docs_url="/api/docs",
 )
 
-app.include_router(router=router)
+app.include_router(router=routes.router)
 
 
 @app.get("/api/health")
 def get_health():
-    return {"status": "ok"}
+    return {"status": "healthy"}
